@@ -1,69 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#12100f" />
-  <meta name="description" content="A quiet collection of moments, words, and memories." />
-  <title>For the moments that still feel like home.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f3ed"><title>Falak — Make a letter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <header class="nav">
-    <a class="mark" href="#top" aria-label="Home">F<span>·</span>L</a>
-    <button class="sound" id="soundBtn" type="button" aria-label="Toggle ambient sound">sound off</button>
-  </header>
-
-  <main id="top">
-    <section class="hero reveal">
-      <p class="eyebrow">a little place kept aside</p>
-      <h1>For the moments<br>that still feel like <em>home.</em></h1>
-      <p class="intro">A quiet collection of words, memories, and the things that are easier to say when nobody is watching.</p>
-      <a class="scroll" href="#letter">read slowly <span>↓</span></a>
-    </section>
-
-    <section class="letter-wrap" id="letter">
-      <article class="letter reveal">
-        <div class="letter-top"><span>01</span><span>for you</span></div>
-        <h2>Dear you,</h2>
-        <p>There are some people who arrive in your life loudly.</p>
-        <p>And then there are people who somehow become part of the quiet. The ordinary minutes. The songs you don't skip. The places you remember differently because they were there.</p>
-        <p>I think that is what I wanted to keep here — not a perfect story, just the small things that mattered more than they looked.</p>
-        <p>So, whenever you find yourself here, stay for a minute.</p>
-        <p class="signature">— A.</p>
-      </article>
-    </section>
-
-    <section class="memories">
-      <div class="section-head reveal"><span>02</span><h2>Little things.</h2><p>The details that never needed an announcement.</p></div>
-      <div class="memory-grid">
-        <button class="memory reveal" data-note="Some conversations become places you can return to."><span>01</span><strong>The conversations</strong><small>that somehow lasted longer than intended.</small></button>
-        <button class="memory reveal" data-note="The best memories rarely look important while they are happening."><span>02</span><strong>The ordinary days</strong><small>that quietly became the ones worth keeping.</small></button>
-        <button class="memory reveal" data-note="There are songs that remember for us when we cannot."><span>03</span><strong>The songs</strong><small>that still know exactly where to take us.</small></button>
-        <button class="memory reveal" data-note="Maybe home is less a place and more a feeling attached to someone."><span>04</span><strong>The feeling</strong><small>of not having to explain yourself.</small></button>
-      </div>
-    </section>
-
-    <section class="closing reveal">
-      <p class="eyebrow">and maybe that's enough</p>
-      <h2>Some things are better<br><em>remembered slowly.</em></h2>
-      <button id="again" type="button">read it again</button>
-    </section>
-  </main>
-
-  <div class="note-modal" id="modal" aria-hidden="true">
-    <div class="modal-backdrop"></div>
-    <div class="note-card" role="dialog" aria-modal="true" aria-label="Memory">
-      <button class="close" id="close" aria-label="Close">×</button>
-      <span class="eyebrow">a small thought</span>
-      <p id="noteText"></p>
-    </div>
-  </div>
-  <footer>made quietly, with intention.</footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<header class="nav"><a class="brand" href="/">falak<span>♥</span></a><a class="nav-link" href="#how">how it works</a></header>
+<main>
+<section class="hero"><div class="hero-copy"><p class="eyebrow">a little corner for big feelings</p><h1>Say it in a way<br><em>they'll remember.</em></h1><p class="hero-text">Create a beautiful digital letter with your words and a photo. No account. No payment. Just write it and share the link.</p><button class="button primary" id="start">Create a letter <span>↗</span></button><p class="micro">♡ Free forever · No signup · No checkout</p></div><div class="hero-card"><span>for you, always.</span><div><small>Dear you,</small><h2>Some things<br>are better<br><em>written down.</em></h2><i>with love,</i></div></div></section>
+<section class="creator" id="creator"><div class="progress"><b class="on">1</b><i></i><b>2</b><i></i><b>3</b></div>
+<div class="step active" id="s1"><p class="eyebrow">STEP 01</p><h2>Who is this for?</h2><p class="lead">Let's start with their name.</p><div class="card"><label>Occasion</label><div class="choices"><button class="choice active" data-occ="Love Letter">♡ <strong>Love Letter</strong><small>For the person who has your heart.</small></button><button class="choice" data-occ="Birthday">✦ <strong>Birthday</strong><small>Make their day a little special.</small></button><button class="choice" data-occ="Thank You">✉ <strong>Thank You</strong><small>Say what sometimes goes unsaid.</small></button><button class="choice" data-occ="Just Because">✿ <strong>Just Because</strong><small>No reason needed.</small></button></div><label for="name">Their name *</label><input id="name" placeholder="Enter their name" maxlength="100"><label for="sender">Your name <span>(optional)</span></label><input id="sender" placeholder="How should they know who sent it?" maxlength="100"><button class="button primary wide" id="next1">Continue →</button></div></div>
+<div class="step" id="s2"><p class="eyebrow">STEP 02</p><h2>Make it yours.</h2><p class="lead">Write the part they'll come back to.</p><div class="card"><label for="title">Letter title</label><input id="title" value="A little something for you" maxlength="120"><label for="message">Your message *</label><textarea id="message" rows="10" maxlength="10000" placeholder="Start writing..."></textarea><div class="counter"><span id="count">0</span> / 10000</div><label>Choose a mood</label><div class="themes"><button class="theme active" data-theme="rose">Rose</button><button class="theme" data-theme="night">Midnight</button><button class="theme" data-theme="sun">Sunlight</button></div><label>Photo <span>(optional)</span></label><label class="upload"><input id="photo" type="file" accept="image/*"><strong>＋ Add a photo</strong><small>JPG, PNG or WebP · under 5 MB</small></label><div class="actions"><button class="button ghost" id="back2">Back</button><button class="button primary" id="next2">Preview →</button></div></div></div>
+<div class="step" id="s3"><p class="eyebrow">STEP 03</p><h2>One last look.</h2><p class="lead">Your letter is ready to share.</p><div id="preview"></div><div class="card"><label for="password">Optional password <span>(leave empty for link-only access)</span></label><input id="password" maxlength="80" placeholder="Add a password if you want"><p class="free-note">♡ No payment. No subscription. No account.</p><div class="actions"><button class="button ghost" id="back3">Back</button><button class="button primary" id="make">Create share link ↗</button></div></div></div>
+<div class="success" id="success"><div class="check">✓</div><p class="eyebrow">IT'S READY</p><h2>Your letter is live.</h2><p>Send this link to them.</p><div class="share"><input id="url" readonly><button class="button primary" id="copy">Copy</button></div><a id="open" target="_blank">Open the letter →</a></div>
+</section>
+<section class="how" id="how"><p class="eyebrow">HOW IT WORKS</p><h2>Write. Preview. Send.</h2><div><article><b>01</b><h3>Write</h3><p>Put the things you mean into words.</p></article><article><b>02</b><h3>Personalize</h3><p>Choose a mood and add a memory.</p></article><article><b>03</b><h3>Send</h3><p>Get one private link and share it.</p></article></div></section>
+</main><footer>falak ♥ — made for words worth keeping.</footer><script src="script.js"></script>
+</body></html>
