@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#12100f" />
+  <meta name="description" content="A quiet collection of moments, words, and memories." />
+  <title>For the moments that still feel like home.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="mark" href="#top" aria-label="Home">F<span>·</span>L</a>
+    <button class="sound" id="soundBtn" type="button" aria-label="Toggle ambient sound">sound off</button>
+  </header>
+
+  <main id="top">
+    <section class="hero reveal">
+      <p class="eyebrow">a little place kept aside</p>
+      <h1>For the moments<br>that still feel like <em>home.</em></h1>
+      <p class="intro">A quiet collection of words, memories, and the things that are easier to say when nobody is watching.</p>
+      <a class="scroll" href="#letter">read slowly <span>↓</span></a>
+    </section>
+
+    <section class="letter-wrap" id="letter">
+      <article class="letter reveal">
+        <div class="letter-top"><span>01</span><span>for you</span></div>
+        <h2>Dear you,</h2>
+        <p>There are some people who arrive in your life loudly.</p>
+        <p>And then there are people who somehow become part of the quiet. The ordinary minutes. The songs you don't skip. The places you remember differently because they were there.</p>
+        <p>I think that is what I wanted to keep here — not a perfect story, just the small things that mattered more than they looked.</p>
+        <p>So, whenever you find yourself here, stay for a minute.</p>
+        <p class="signature">— A.</p>
+      </article>
+    </section>
+
+    <section class="memories">
+      <div class="section-head reveal"><span>02</span><h2>Little things.</h2><p>The details that never needed an announcement.</p></div>
+      <div class="memory-grid">
+        <button class="memory reveal" data-note="Some conversations become places you can return to."><span>01</span><strong>The conversations</strong><small>that somehow lasted longer than intended.</small></button>
+        <button class="memory reveal" data-note="The best memories rarely look important while they are happening."><span>02</span><strong>The ordinary days</strong><small>that quietly became the ones worth keeping.</small></button>
+        <button class="memory reveal" data-note="There are songs that remember for us when we cannot."><span>03</span><strong>The songs</strong><small>that still know exactly where to take us.</small></button>
+        <button class="memory reveal" data-note="Maybe home is less a place and more a feeling attached to someone."><span>04</span><strong>The feeling</strong><small>of not having to explain yourself.</small></button>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <p class="eyebrow">and maybe that's enough</p>
+      <h2>Some things are better<br><em>remembered slowly.</em></h2>
+      <button id="again" type="button">read it again</button>
+    </section>
+  </main>
+
+  <div class="note-modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="note-card" role="dialog" aria-modal="true" aria-label="Memory">
+      <button class="close" id="close" aria-label="Close">×</button>
+      <span class="eyebrow">a small thought</span>
+      <p id="noteText"></p>
+    </div>
+  </div>
+  <footer>made quietly, with intention.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
