@@ -1,23 +1,16 @@
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: .12 });
-reveals.forEach(el => observer.observe(el));
-
-const modal = document.getElementById('modal');
-const noteText = document.getElementById('noteText');
-const close = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); };
-
-document.querySelectorAll('.memory').forEach(card => card.addEventListener('click', () => {
-  noteText.textContent = card.dataset.note;
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
-}));
-document.getElementById('close').addEventListener('click', close);
-document.querySelector('.modal-backdrop').addEventListener('click', close);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-document.getElementById('again').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-
-document.getElementById('soundBtn').addEventListener('click', e => {
-  e.currentTarget.textContent = e.currentTarget.textContent === 'sound off' ? 'sound on' : 'sound off';
-});
+const $=id=>document.getElementById(id);const state={occ:'Love Letter',theme:'rose',name:'',sender:'',title:'',message:'',photo:''};
+$('start').onclick=()=>{ $('creator').scrollIntoView({behavior:'smooth'}); };
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.occ=b.dataset.occ});
+document.querySelectorAll('.theme').forEach(b=>b.onclick=()=>{document.querySelectorAll('.theme').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.theme=b.dataset.theme});
+$('message').oninput=()=>$('count').textContent=$('message').value.length;
+$('photo').onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>5*1024*1024){alert('Please keep the photo under 5 MB.');e.target.value='';return}const r=new FileReader();r.onload=()=>state.photo=r.result;r.readAsDataURL(f)};
+function step(n){document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));$('s'+n).classList.add('active');document.querySelectorAll('.progress b').forEach((x,i)=>x.classList.toggle('on',i<n));window.scrollTo({top:$('creator').offsetTop-30,behavior:'smooth'})}
+$('next1').onclick=()=>{state.name=$('name').value.trim();state.sender=$('sender').value.trim();if(!state.name){alert('Please enter their name.');return}step(2)};
+$('back2').onclick=()=>step(1);$('back3').onclick=()=>step(2);
+$('next2').onclick=()=>{state.title=$('title').value.trim()||'A little something for you';state.message=$('message').value.trim();if(!state.message){alert('Write something first.');return}render();step(3)};
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){const c=state.theme==='rose'?'':state.theme;$('preview').innerHTML=`<div class="mini ${c}"><div>♡ ${esc(state.occ)}</div><h3>${esc(state.title)}</h3><div class="msg">${esc(state.message)}</div>${state.photo?`<img src="${state.photo}" alt="Memory">`:''}<p>— ${esc(state.sender||'someone who cares')}</p></div>`}
+function encode(obj){return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))}function decode(v){return JSON.parse(decodeURIComponent(escape(atob(v))))}
+$('make').onclick=()=>{state.password=$('password').value;const data=encode(state);if(data.length>7000){alert('This letter is too large for a share link. Shorten the message or remove the photo.');return}const url=location.origin+location.pathname+'#letter='+data;$('url').value=url;$('open').href=url;document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));$('success').classList.add('show');window.scrollTo({top:$('creator').offsetTop-30,behavior:'smooth'})};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('url').value);$('copy').textContent='Copied ✓';setTimeout(()=>$('copy').textContent='Copy',1500)}catch{ $('url').select();document.execCommand('copy') }};
+function loadShared(){const h=location.hash;if(!h.startsWith('#letter='))return;try{const d=decode(h.slice(8));document.body.innerHTML=`<header class="nav"><a class="brand" href="${location.pathname}">falak<span>♥</span></a></header><main style="max-width:760px;margin:90px auto;padding:25px"><div class="mini ${d.theme==='rose'?'':d.theme}"><div>♡ ${esc(d.occ)}</div><h3>${esc(d.title)}</h3><p style="font-size:12px">For ${esc(d.name)}</p>${d.photo?`<img src="${d.photo}" alt="Memory">`:''}<div class="msg">${esc(d.message)}</div><p style="margin-top:25px">— ${esc(d.sender||'someone who cares')}</p></div><p style="text-align:center;color:#756d68">made with falak ♥</p></main>`}catch{history.replaceState(null,'',location.pathname)}}loadShared();
